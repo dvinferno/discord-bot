@@ -1,0 +1,30 @@
+{
+  "name": "discord-bot",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bunx concurrently \"bun run start:bot\" \"bun run start:api\"",
+    "start:bot": "bun run src/bot/index.ts",
+    "start:api": "bun --watch src/api/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.5",
+    "concurrently": "^9.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.2.0",
+    "arctic": "^3.5.0",
+    "astro": "^5.5.4",
+    "axios": "^1.8.4",
+    "discord.js": "^14.18.0",
+<<<<<<< HEAD
+    "elysia": "^1.2.25",
+    "elysia-oauth2": "^2.0.0"
+=======
+    "elysia": "^1.2.25"
+>>>>>>> 5723dd4 (added Elysia)
+  }
+}
