@@ -1,5 +1,4 @@
 import { Elysia } from "elysia";
-<<<<<<< HEAD
 import { oauth2 } from "elysia-oauth2";
 import { cors } from '@elysiajs/cors';
 
@@ -107,10 +106,6 @@ app.get('/dashboard', async ({ cookie, error }) => {
 });
 
 app.listen(port!)
-=======
-
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3002);
->>>>>>> 5723dd4 (added Elysia)
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

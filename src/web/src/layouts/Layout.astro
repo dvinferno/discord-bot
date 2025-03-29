@@ -1,34 +1,21 @@
 ---
-import Navbar from "../components/React/Navbar";
+import Nav from "../components/React/Navbar";
+import "../styles/global.css";
+import { ThemeModeScript } from "flowbite-react";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <ThemeModeScript />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Discord Bot</title>
   </head>
-  <body>
-<<<<<<< HEAD
-    <Navbar />
+  <body class="bg-gradient-to-r from-gray-800 via-gray-900 to-black">
+    <Nav client:idle />
     <slot />
   </body>
 </html>
-=======
-    <slot />
-  </body>
-</html>
-
-<style>
-  html,
-  body {
-    background-color: darkslategrey;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
->>>>>>> 5723dd4 (added Elysia)

@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
 @plugin "daisyui";
-=======
-@import "tailwindcss";
->>>>>>> 5723dd4 (added Elysia)

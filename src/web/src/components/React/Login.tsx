@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/global.css";
-import LoginButton from "./LoginButton";
+import LinkButton from "./LinkButton";
 
 const Login = () => {
   const [user, setUser] = useState(null);
@@ -35,21 +35,18 @@ const Login = () => {
   };
 
   return (
-    <div
-      id="login"
-      className="flex min-h-screen items-center justify-center bg-gradient-to-r from-gray-800 via-gray-900 to-black"
-    >
-      <div className="text-center p-10 bg-gray-800 rounded-3xl shadow-2xl max-w-lg w-full">
+    <div id="login" className="flex min-h-screen items-center justify-center">
+      <div className="text-center max-w-lg w-full mb-50">
         <h1 className="text-4xl font-bold text-white mb-6">
-          Welcome to My Bot Dashboard!
+          Welcome to "Unititled Bot" Dashboard
         </h1>
         <p className="text-lg text-gray-300 mb-4">
-          Log in to manage your bot and settings easily.
+          Log in to manage bot and settings easily.
         </p>
         <div className="pb-8">
           {user ? (
             <div className="flex flex-col items-center">
-              <LoginButton text="Go to Dashboard" redirectUri="/dashboard" />
+              <LinkButton text="Go to Dashboard" redirectUri="/dashboard" />
               <button
                 className="text-red-500 cursor-pointer hover:text-red-600 pt-2 underline"
                 onClick={handleLogout}
@@ -58,8 +55,8 @@ const Login = () => {
               </button>
             </div>
           ) : (
-            <LoginButton
-              text="Login to Discord"
+            <LinkButton
+              text="Login to with Discord"
               redirectUri="http://localhost:3002/auth/discord"
             />
           )}

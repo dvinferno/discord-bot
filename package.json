@@ -20,11 +20,6 @@
     "astro": "^5.5.4",
     "axios": "^1.8.4",
     "discord.js": "^14.18.0",
-<<<<<<< HEAD
-    "elysia": "^1.2.25",
-    "elysia-oauth2": "^2.0.0"
-=======
     "elysia": "^1.2.25"
->>>>>>> 5723dd4 (added Elysia)
   }
 }

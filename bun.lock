@@ -10,10 +10,7 @@
         "axios": "^1.8.4",
         "discord.js": "^14.18.0",
         "elysia": "^1.2.25",
-<<<<<<< HEAD
         "elysia-oauth2": "^2.0.0",
-=======
->>>>>>> 5723dd4 (added Elysia)
       },
       "devDependencies": {
         "@types/bun": "^1.2.5",

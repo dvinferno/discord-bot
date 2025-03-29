@@ -6,7 +6,7 @@ type props = {
   redirectUri: string;
 };
 
-const LoginButton: React.FC<props> = ({ text, redirectUri }) => {
+const LinkButton: React.FC<props> = ({ text, redirectUri }) => {
   const handleLogin = () => {
     window.location.href = redirectUri;
   };
@@ -21,4 +21,4 @@ const LoginButton: React.FC<props> = ({ text, redirectUri }) => {
   );
 };
 
-export default LoginButton;
+export default LinkButton;
