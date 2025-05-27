@@ -1,24 +1,24 @@
-import type React from "react";
 import "../../styles/global.css";
 
 type props = {
   text: string;
   redirectUri: string;
+  className?: string;
 };
 
-const LinkButton: React.FC<props> = ({ text, redirectUri }) => {
+function LinkButton({ text, redirectUri, className = "" }: props) {
   const handleLogin = () => {
     window.location.href = redirectUri;
   };
 
   return (
     <button
-      className="btn rounded-md bg-indigo-600 hover:bg-indigo-700"
+      className={`btn rounded-md bg-indigo-600 hover:bg-indigo-700/80 transition ${className}`}
       onClick={handleLogin}
     >
       {text}
     </button>
   );
-};
+}
 
 export default LinkButton;

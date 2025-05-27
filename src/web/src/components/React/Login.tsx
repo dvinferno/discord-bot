@@ -1,30 +1,9 @@
-import React, { useEffect, useState } from "react";
 import "../../styles/global.css";
 import LinkButton from "./LinkButton";
+import { useUser } from "../../context/UserContext";
 
 const Login = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch("http://localhost:3002/auth/validate", {
-          credentials: "include", // Ensure cookies are sent
-        });
-
-        if (!response.ok) {
-          throw new Error("Authentication failed");
-        }
-
-        const data = await response.json();
-        setUser(data.user);
-      } catch (err) {
-        console.log("Failed to authenticate. Please log in.");
-      }
-    };
-
-    checkAuth();
-  }, []);
+  const { user } = useUser();
 
   const handleLogout = async () => {
     try {

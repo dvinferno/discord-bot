@@ -4,21 +4,23 @@ import { cors } from '@elysiajs/cors';
 
 const port = Bun.env.API_PORT
 const app = new Elysia()
-  .use(
-    oauth2({
-      Discord: [
-        Bun.env.APP_ID!,
-        Bun.env.CLIENT_SECRET!,
-        Bun.env.DISCORD_REDIRECT_URI!,
-      ]
-    })
-  )
 
-  .use(cors({
-    origin: 'http://localhost:4321', // Allow requests from your Astro app
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true // Allow cookies or authorization headers
-  }))
+app.use(
+  oauth2({
+    Discord: [
+      Bun.env.APP_ID!,
+      Bun.env.CLIENT_SECRET!,
+      Bun.env.DISCORD_REDIRECT_URI!,
+    ]
+  })
+)
+
+app.use(
+  cors({
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true, // Allow cookies or authorization headers
+  })
+)
 
 app.get('/', () => 'Hello');
 
@@ -66,12 +68,12 @@ app.get('/auth/callback', async ({ oauth2, redirect, cookie: { auth_token, refre
 
 });
 
-app.get('/auth/validate', async ({ cookie, error }) => {
+app.get('/auth/validate', async ({ cookie }) => {
   const accessToken = cookie.auth_token?.value;
   const refreshToken = cookie.refresh_token?.value;
 
   if (!accessToken) {
-    return error(401, "Not authenticated.");
+    return console.error(401, "Not authenticated.");
   }
 
   try {
