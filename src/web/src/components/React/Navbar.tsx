@@ -47,6 +47,22 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
 
+  console.log("User:", user);
+
+  const getDiscordAvatar = (user: {
+    avatar: string;
+    discriminator: string;
+    id: any;
+  }) => {
+    if (!user.avatar) {
+      // Return default avatar if user has none
+      const defaultAvatarIndex = parseInt(user.discriminator) % 5;
+      return `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`;
+    }
+
+    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=512`;
+  };
+
   const showNavbar = () => {
     setIsOpen((prev) => !prev);
     console.log(isOpen);
@@ -63,11 +79,15 @@ export default function Navbar() {
           <NavButton className="text-sm" icon={DocIcon} label="Documentation" />
 
           {user ? (
-            <ProfileButton label="Placeholder" />
+            <ProfileButton
+              label={user.global_name}
+              avatarUrl={getDiscordAvatar(user)}
+            />
           ) : (
             <LinkButton
               text="Login"
               redirectUri="http://localhost:3002/auth/discord"
+              className="bg-indigo-600 hover:bg-indigo-700/80"
             />
           )}
         </nav>
@@ -82,17 +102,25 @@ export default function Navbar() {
 
       {/* Mobile Menu with Animation */}
       <div
-        className={`md:hidden fixed top-16 left-0 w-full z-0 overflow-hidden transition-all duration-300 ease-in-out transform bg-gradient-to-r from-gray-800 via-gray-900 to-black ${
+        className={`md:hidden fixed top-16 left-0 w-full z-0 overflow-hidden transition-all duration-300 ease-in-out transform bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 ${
           isOpen
             ? "max-h-60 opacity-100 scale-y-100"
             : "max-h-0 opacity-0 scale-y-0"
         } origin-top`}
       >
         <div className="flex flex-col gap-4 p-4">
-          <LinkButton
-            text="Login"
-            redirectUri="http://localhost:3002/auth/discord"
-          />
+          {user ? (
+            <ProfileButton
+              label={user.global_name}
+              avatarUrl={getDiscordAvatar(user)}
+            />
+          ) : (
+            <LinkButton
+              text="Login"
+              redirectUri="http://localhost:3002/auth/discord"
+              className="bg-indigo-600 hover:bg-indigo-700/80"
+            />
+          )}
           <NavButton icon={DashIcon} label="Dashboard" />
           <NavButton icon={DocIcon} label="Documentation" />
         </div>

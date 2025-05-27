@@ -13,7 +13,7 @@ function LinkButton({ text, redirectUri, className = "" }: props) {
 
   return (
     <button
-      className={`btn rounded-md bg-indigo-600 hover:bg-indigo-700/80 transition ${className}`}
+      className={`btn rounded-sm transition ${className}`}
       onClick={handleLogin}
     >
       {text}
